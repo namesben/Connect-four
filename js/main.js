@@ -33,17 +33,30 @@ let yellowIsNext = true;
 // functions 
 const getClassListArray = (cell) => {
     const classList = cell.classList;
-
     return [...classList];
-}
+};
+
+const getCellLocation = (cell) => {
+    const classList = getClassListArray (cell);
+
+    const rowClass = classList.find(className => className.includes('row'));
+    const rowClass = classList.find(className => className.includes('col'));
+
+    const rowIndex = rowClass[4];
+    const colIndex = colClass[4];
+    const rowNumber = parseInt(rowIndex, 10);
+    const rowNumber = parseInt(colIndex, 10);
+    
+    return [rowNumber, colNumber];
+
+};
+
 
 // event handlers
 const handleCellMouseOver = (e) => {
     const cell = e.target;
-
-    const classList = cell.classList;
-    console.log([...classList]);
-}
+    const classList = getClassListArray(cell);
+};
 
 // adding event listeners 
 for (const row of rows) {
